@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Formulário de Cadastro</h2>
+    <form id="meuForm">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" placeholder="Digite seu nome" required>
+            <small id="erroNome" class="form-text text-danger"></small>
+        </div>
+        <div class="form-group">
+            <label for="endereco">Endereço</label>
+            <input type="text" class="form-control" id="endereco" placeholder="Digite seu endereço" required>
+        </div>
+        <div class="form-group">
+            <label for="cep">CEP</label>
+            <input type="text" class="form-control" id="cep" placeholder="Digite seu CEP" required>
+        </div>
+        <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input type="text" class="form-control" id="telefone" placeholder="(XX) XXXX-XXXX" required>
+        </div>
+        <div class="form-group">
+            <label for="foto">Foto (URL)</label>
+            <input type="text" class="form-control" id="foto" placeholder="URL da foto" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+
+    <h3 class="mt-5">Registros</h3>
+    <input type="text" id="filtroNome" class="form-control" placeholder="Filtrar por nome" onkeyup="filtraGrid()">
+    <button class="btn btn-info mt-2" onclick="ordenarGrid()">Ordenar</button>
+    <div id="grid" class="row mt-3">
+        <!-- Grid de Dados -->
+    </div>
+    <button class="btn btn-secondary mt-3" onclick="mostrarMais()">Mostrar Mais</button>
+
+    <div id="toast" class="toast">Operação realizada com sucesso!</div>
+</div>
+
+<!-- Modal de Exclusão -->
+<div id="excluirModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="fecharModal('excluirModal')">&times;</span>
+        <p>Tem certeza de que deseja excluir este registro?</p>
+        <button class="btn btn-danger" onclick="confirmarExclusao()">Excluir</button>
+        <button class="btn btn-secondary" onclick="fecharModal('excluirModal')">Cancelar</button>
+    </div>
+</div>
+
+<!-- Modal de Edição -->
+<div id="editarModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="fecharModal('editarModal')">&times;</span>
+        <h2>Editar Registro</h2>
+        <form id="formEditar">
+            <div class="form-group">
+                <label for="nomeEditar">Nome</label>
+                <input type="text" class="form-control" id="nomeEditar" required>
+            </div>
+            <div class="form-group">
+                <label for="enderecoEditar">Endereço</label>
+                <input type="text" class="form-control" id="enderecoEditar" required>
+            </div>
+            <div class="form-group">
+                <label for="cepEditar">CEP</label>
+                <input type="text" class="form-control" id="cepEditar" required>
+            </div>
+            <div class="form-group">
+                <label for="telefoneEditar">Telefone</label>
+                <input type="text" class="form-control" id="telefoneEditar" required>
+            </div>
+            <div class="form-group">
+                <label for="foto">Foto (URL)</label>
+                <input type="text" id="foto" class="form-control" placeholder="Insira a URL da foto">
+                <span id="erroFoto" class="erro"></span>
+            </div>
+            
+            <button type="button" class="btn btn-success" onclick="confirmarEdicao()">Confirmar Edição</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
