@@ -263,3 +263,17 @@ function mostrarToast() {
         toast.style.display = "none";
     }, 2000);
 }
+let myTooltipEl = document.getElementById('myTooltip');
+
+let tooltip = new bootstrap.Tooltip(myTooltipEl);
+
+myTooltipEl.addEventListener('click', function () {
+    tooltip.show();
+});
+
+myTooltipEl.addEventListener('hidden.bs.tooltip', function () {
+    console.log('Tooltip foi escondido!');
+});
+//<button id="myTooltip" type="button" class="btn btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip Exemplo">
+            Passe o mouse aqui
+        </button>
